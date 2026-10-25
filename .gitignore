@@ -1,0 +1,5 @@
+drive_path.txt
+_once/
+outbox/
+*.mp4
+__pycache__/

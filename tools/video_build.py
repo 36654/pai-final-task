@@ -138,6 +138,7 @@ def main():
         else:
             sys.exit('STOP: plan.txt の %d 行目が読めません: %s' % (ln + 1, line))
         d = dur(seg); total += d; segs.append(seg); print('  %-5s %5.1f 秒  %s' % (p[0], d, (p[3] if p[0] == 'clip' else (p[2] if p[0] == 'card' else ('構成図' if p[0] == 'diagram' else ('スライド ' + p[2] if p[0] == 'image' else '講座のジングル'))))[:40].replace('\\n', ' / ')))
+        if p[0] == 'clip': print('        元の動画: 前 %.1f 秒 / 天井 %.1f 秒 → %g 倍速 → %.1f 秒(元の長さ ÷ 倍速 = %.1f 秒)' % (dur(fr), dur(ov), sp, d, dur(fr) / sp))
     lst = os.path.join(work, 'list.txt'); open(lst, 'w').write(''.join("file '%s'\n" % s for s in segs))
     run(['ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', '-movflags', '+faststart', out])
     print('合計 %.1f 秒 -> %s' % (total, out))

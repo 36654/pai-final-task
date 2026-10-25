@@ -11,14 +11,14 @@ image|8|s3_method.png
 image|8|s8_models.png
 image|10|s6_layout.png
 image|8|s7_success.png
-clip|2026-10-19_smolvla_eval|eval_s1_region_smolvla_final_e50_m1_00|2|SmolVLA（VLA）：積み木（赤）を箱へ|成功 ・ 配置 00（20配置の最初）
-clip|2026-10-22_act30k_1021|eval_s1_region_act30k_1021_te_04|2|ACT：配置 04（20配置の4番目）|失敗（時間切れ）
-clip|2026-10-19_smolvla_eval|eval_s1_region_smolvla_final_e50_m1_04|2|SmolVLA：ACT と同じ配置 04（20配置の4番目）|成功
-clip|2026-10-19_smolvla_eval|eval_s1_region_smolvla_final_e50_m1_05|2|SmolVLA：配置 05（20配置の5番目）|失敗
+image|8|s5_stage1.png
+clip|2026-10-22_act30k_1021|eval_s1_region_act30k_1021_te_04|2|段階1 ACT：積み木1個（赤）|失敗（時間切れ）
+clip|2026-10-19_smolvla_eval|eval_s1_region_smolvla_final_e50_m1_04|2|段階1 SmolVLA：同じ配置|成功
 image|8|s5_stage2.png
-clip|2026-10-24_s2_act_1024|eval_s1_region_act30k_1021_te_sC_s2_00|2|ACT：積み木1個（青）|成功
-clip|2026-10-24_s2_act_1024|eval_s1_region_act30k_1021_te_sA_s2_00|2|ACT：積み木2個（赤・青）|失敗 ・ ACT は言語指示を受け取れない
+clip|2026-10-25_s2_fric15_clips|eval_s1_region_act30k_1021_te_sA_s2_00|2|段階2 ACT：積み木2個（赤・青）|失敗 ・ 言語指示を受け取れず、中間付近で止まる
+clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_00|2|段階2 SmolVLA：同じ配置・指示「赤」|成功
+clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_01|2|段階2 SmolVLA：同じ配置・指示「青」|成功
 image|14|s4_results.png
-image|8|s9_future.png
+image|10|s9_future.png
 
 jingle|*ED.mp4

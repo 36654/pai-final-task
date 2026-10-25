@@ -85,7 +85,7 @@ b90b63e8a6b57024|assets/slides/s3_method.png|asset
 8b3df50d2bfa7b16|assets/slides/s5_stage2.png|asset
 c2df9219ab6ef5fd|assets/PAI応用1_最終課題_ED.mp4|asset
 42c6d8ef4939590d|assets/PAI応用1_最終課題_OP.mp4|asset
-23a9266a0ce97fa6|assets/slides/s6_layout.png|asset
+8caedf6fc73079f7|assets/slides/s6_layout.png|asset
 4fe7c93a5cdb3733|assets/slides/s7_success.png|asset
 54e9f78f8c9a6495|assets/slides/s8_models.png|asset
 a35322725eee6179|assets/slides/s9_future.png|asset

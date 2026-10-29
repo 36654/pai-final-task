@@ -13,8 +13,8 @@ e982c7a935bea994|finger_friction.bat|base
 47457c801ce85621|make_dataset.bat|demo
 56f4cadea5cf858b|pick_region.bat|demo
 1556ad607e9b3dc2|policy_offline.bat|diag
-1c27d3e269a1a4d0|README.txt|doc
-be18b85fd2202b43|save_outbox.bat|base
+3ef57605e53920a7|README.txt|doc
+9fbc1d675175cc5e|save_outbox.bat|base
 26cd9d602394c704|seen_all.bat|eval
 599977b5257b15cd|set_camera.bat|base
 f4578f55dda333d7|setup_machine.bat|base
@@ -42,7 +42,7 @@ f199756b1a648b07|tools/grab.sh|tool
 4af975e5901aab24|tools/grid_report.py|tool
 3ce1232b23579012|tools/infer_img.sh|tool
 605ee293e3a8e881|tools/make_dataset.sh|tool
-2ae0011031aa33b5|tools/names.conf|config
+254cb363de210f2e|tools/names.conf|config
 9dfbd64d5b55e3f0|tools/pai_img/infer_img.py|tool
 ddf69e3573daaeef|tools/pai_img/npz2lerobot.py|tool
 c26ee29686f4b8c8|tools/pai_img/train_img.py|tool
@@ -61,14 +61,14 @@ e34657ea9b481768|tools/smolvla_all.sh|tool
 2a6f62a2de932f43|tools/traj_dump.py|tool
 56a455828157c641|tools/traj_dump.sh|tool
 4fd9dbe3df7fe720|tools/xfer.ps1|tool
-0abd16a771e52fdf|tools_audit.bat|diag
+ef9864226b836f27|tools_audit.bat|diag
 e98a1da8da784f3b|trace_stats.bat|eval
 077b32c09a2c7916|traj_dump.bat|diag
 b1ecc0307fa1cb23|xfer_WRITE.bat|base
 2f157abfa8cd0b0e|stage2_gen_WRITE.bat|demo
-493fe2a8e7aad9d4|stage2_eval.bat|eval
+e2f5789d6182c0f0|stage2_eval.bat|eval
 661ad02d4be045e6|tools/stage2_gen.sh|tool
-a2612bce56293cab|tools/stage2_eval.sh|tool
+4537822dca2dc7bd|tools/stage2_eval.sh|tool
 33dfe9e07aedfa26|tools/env_gate.py|tool
 0f0b870a8a786788|vla_diag.bat|diag
 e0ef593d705c7fe1|tools/vla_diag.py|tool
@@ -89,3 +89,7 @@ c2df9219ab6ef5fd|assets/PAI応用1_最終課題_ED.mp4|asset
 4fe7c93a5cdb3733|assets/slides/s7_success.png|asset
 54e9f78f8c9a6495|assets/slides/s8_models.png|asset
 a35322725eee6179|assets/slides/s9_future.png|asset
+436e023f29edf4ee|act_close.bat|diag
+abe9501519d37cad|tools/act_close.py|tool
+a72732e7e46be084|tools/act_close.sh|tool
+3c0dc13a9aa167b3|tools/colab/act_train_s2mix_1029.ipynb|colab

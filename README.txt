@@ -1,4 +1,4 @@
-pai_tools — Physical AI 最終課題のツール(2026-10-25 版)
+pai_tools — Physical AI 最終課題のツール(2026-10-30 版)
 
 置き場所: Google Drive の「PAI2026 Workspace」の中に pai_tools フォルダごと置く。
 データ(lerobot_dataset、checkpoints、lerobot_src)も同じ PAI2026 Workspace 直下。
@@ -39,21 +39,23 @@ pai_tools — Physical AI 最終課題のツール(2026-10-25 版)
   make_dataset.bat     npz → LeRobot v2.1(成功したデモだけ)
 
 【学習】
+  tools\colab\act_train_s2mix_1029.ipynb  段階2用のACT(S2MIX。30,000ステップ、約59分。保存名 s2_mix_1025_act30k_1029)。
   tools\colab\act_train.ipynb  Colab(GPU)でACTを学習。保存名 RUN は日付入りで、既にあれば止まる。学習後に train_args.json と照合する。「ランタイム → すべてのセルを実行」で最後まで進む
 
 【ステージ2: 積み木2個・言語指示で対象を選ぶ】(10/24)
   目的: 同じ画面(赤と青)で、指示「put the red block in the box」「…blue…」により取る積み木が変わるか(SmolVLA)。ACT は言語を受け取れない。学習していない色(黄色)を指示で選べるかも測る。
   video_WRITE.bat      提出用の動画を作る。video_plan.txt(台本: 場面・システム構成図・クリップ・字幕・倍速。倍速は動画内か概要欄に明記する。講座の文書は2倍速まで、運営の回答は8倍速でも可(10/25))に従い、Drive の results のクリップを左(正面)右(天井・180°回転)に並べて MP4 にする。Desktop\outbox\PAI_movie_日時.mp4 を新規に作る(上書きしない)。Gazebo不要、約1〜3分。講座のオープニング/エンディング(*OP.mp4 / *ED.mp4)は pai_tools\assets に、スライド画像(s1〜s8: 課題・構成・手法・2方策・配置の考え方・成功の基準・段階2・結果)は pai_tools\assets\slides に置く(台本の jingle 行、image 行)
-  stage2_gen_WRITE.bat [convert|pair|pairconvert|mix|mixconvert]   デモ生成(約2.6時間)+LeRobot変換+Driveへの移送。色は赤・青・緑から毎回2色。データ名は tools\names.conf の S2DATA(日付入り。既にあれば止まる)。最初の10件の成功率が70%未満なら自動停止。convert=生成済みで変換と移送だけやり直す。mix=S2PAIR とステージ1の単一ブロックのデモ(DATA)を合わせた S2MIX を作る(Gazebo不要、約10分。2回目の評価で条件Cが3/10だったため)
+  stage2_gen_WRITE.bat [convert|pair|pairconvert|mix|mixconvert]   デモ生成(約2.6時間)+LeRobot変換+Driveへの移送。色は赤・青・緑から毎回2色。データ名は tools\names.conf の S2DATA(日付入り。既にあれば止まる)。最初の10件の成功率が70%未満なら自動停止。convert=生成済みで変換と移送だけやり直す。mix=S2PAIR とステージ1の単一ブロックのデモ(DATA)を合わせた S2MIX を作る(Gazebo不要、約10分。2回目の評価で段階2Cが3/10だったため)
                          pair=S2DATA と同じ画面(同じ位置・同じ色)で対象だけ入れ替えたデモ(約2.4時間)を作り、S2DATA と合わせて S2PAIR にして変換・移送する(元のデータは変更しない)。pairconvert=その変換と移送のやり直し
   経緯(10/24): S2DATA のモデルは、学習した配置は再現したが、対象を入れ替えた指示は 0/6(画面を覚えるだけで指示を使っていなかった。各画面の対象が1通りだったため)。そこで pair で、同じ画面に対象2通りのデモを揃えた
   vla_diag.bat URL TOKEN   SmolVLAの診断(Gazebo不要・約5分・何も変更しない)。学習デモの画面での出力と専門家の差/指示を替えたときの旋回の向き/評価中の腕の動き(閉じた位置)。結果 Desktop\outbox\vla_diag.txt
   次に Colab で tools\colab\smolvla_train.ipynb を実行(S2PAIR。30,000ステップ、約115分。保存先は <データ名>_smolvla。既にあれば止まる)
-  stage2_eval.bat act    現行のACT(names.conf の ACT30K)で条件 C → A → B を測る(30回、約40分)
-  stage2_eval.bat seen URL TOKEN   条件S(SmolVLA。学習に使った配置の再現を、学習と同じ指示と、対象を入れ替えた指示で。12回、約40分)。画面を覚えているだけか、指示を使っているかを分ける
-  stage2_eval.bat vla URL TOKEN   ステージ2のSmolVLA(names.conf の S2_SMOLVLA)で条件 C → A → B を測る(40回)。URL/TOKEN は smolvla_infer.ipynb のセル5の出力(モデル名はセル1の NAME 1か所だけ書き換える。セル6はトンネルの疎通を1分ごとに確認する)
+  stage2_eval.bat act    段階2のACT(names.conf の S2_ACT30K。積み木2個のデモで学習)で 2C → 2A → 2B を測る(30回、約40分)。結果は s2_act2_*.txt(段階1のACTで測った旧結果 s2_act_*.txt は上書きしない)
+  act_close.bat [名前の一部]   ACT の段階2A/2B の記録から、手を閉じた位置が対象・もう一方の積み木・中間のどれかを調べる(Gazebo不要・何も変更しない・数秒)。結果 Desktop\outbox\act_close.txt。配置は seed 2000 の10通りに固定
+  stage2_eval.bat seen URL TOKEN   段階2S(SmolVLA。学習に使った配置の再現を、学習と同じ指示と、対象を入れ替えた指示で。12回、約40分)。画面を覚えているだけか、指示を使っているかを分ける
+  stage2_eval.bat vla URL TOKEN   ステージ2のSmolVLA(names.conf の S2_SMOLVLA)で 2C → 2A → 2B を測る(40回)。URL/TOKEN は smolvla_infer.ipynb のセル5の出力(モデル名はセル1の NAME 1か所だけ書き換える。セル6はトンネルの疎通を1分ごとに確認する)
   (評価とデモ生成は、開始時に tools/env_gate.py が環境を確認する: 指の摩擦 mu1 が 6 か所とも 1.5、Gazebo の起動が xacro の更新より新しい。摩擦が違えば finger_friction.sh で自動的に書き換える。満たさなければ測定せず終了コード3で止まる。確認した値は結果ファイルの先頭に残る。--skip-env-gate で省けるが、省いた結果は環境未確認と明記する)
-  条件 A=赤+青(SmolVLAは指示を替えて2回。ACTは配置ごと1回で両方の対象として採点) B=黄色(未学習)が対象・赤が妨害物 C=青1個。配置は10個、ACT と SmolVLA で同じ(seed 2000)。成功=指示した積み木だけが箱に入った
+  段階2A=赤+青(SmolVLAは指示を替えて2回。ACTは配置ごと1回で両方の対象として採点) 2B=黄色(未学習)が対象・赤が妨害物 2C=青1個(その場面は未学習)。評価の順は 2C → 2A → 2B。配置は10個、ACT と SmolVLA で同じ(seed 2000)。成功=指示した積み木だけが箱に入った
   結果は Wilson 区間つきの [要約] と、失敗の内訳(ok / wrong=別の積み木 / both / none)。各回の動画は Desktop\outbox。終わったら save_outbox.bat 名前 で Drive へ
 
 【評価】(Gazebo要)
@@ -83,3 +85,5 @@ pai_tools — Physical AI 最終課題のツール(2026-10-25 版)
   10/24: tools にあった M1(お辞儀デモ)用の eval_img.sh、pai_img\\eval_img.py、train_img.sh(どこからも呼ばれていなかった)を _once\\tools へ退避
   起動後の最初の1件でアームが追従しないことがある。Gazeboを再起動すると直る(10/24)
   10/24: xfer_WRITE.bat ほか4つのbatの日本語を英数字に直した(日本語の行があると、この環境で「age: is not recognized」と出て途中で終わることがあった)
+  10/30: 段階2のACTを積み木2個のデモで学習し直した(旧ACTは段階1のモデルで、学習していない場面の測定だった)。names.conf に S2_ACT30K を追加し、stage2_eval.bat act の対象と結果ファイル名(s2_act2_*)を変更。条件A/B/C を段階2A/2B/2C と呼ぶ。save_outbox.bat の日本語を英数字に直した
+  10/30 _once へ退避: s2act_eval_once.bat、s1act_eval_once.bat、fric_survey_once.bat、fric_survey2_once.bat、color_tally_once.bat、act_mid_once.bat、act_mid.py(閉じた位置の分析は act_close.bat に恒久化)

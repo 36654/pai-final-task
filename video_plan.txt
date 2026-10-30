@@ -15,9 +15,10 @@ image|8|s5_stage1.png
 clip|2026-10-22_act30k_1021|eval_s1_region_act30k_1021_te_04|2|段階1 ACT：積み木1個（赤）|失敗（時間切れ）
 clip|2026-10-19_smolvla_eval|eval_s1_region_smolvla_final_e50_m1_04|2|段階1 SmolVLA：同じ配置|成功
 image|8|s5_stage2.png
-clip|2026-10-25_s2_fric15_clips|eval_s1_region_act30k_1021_te_sA_s2_00|2|段階2 ACT：積み木2個（赤・青）|失敗 ・ 言語指示を受け取れず、中間付近で止まる
-clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_00|2|段階2 SmolVLA：同じ配置・指示「赤」|成功
-clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_01|2|段階2 SmolVLA：同じ配置・指示「青」|成功
+clip|2026-10-30_2026-10-29_s2_act_retrain|eval_s2_mix_1025_act30k_1029_te_sA_s2_00|2|段階2A ACT：言語指示なし|この配置では赤が箱に入った
+clip|2026-10-30_2026-10-29_s2_act_retrain|eval_s2_mix_1025_act30k_1029_te_sA_s2_01|2|段階2A ACT：言語指示なし|別の配置では青が箱に入った
+clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_00|2|段階2A SmolVLA：1本目と同じ配置・指示「赤」|成功
+clip|2026-10-25_s2_fric15_clips|eval_s2_mix_1025_smolvla_final_sA_e50_s2_01|2|段階2A SmolVLA：同じ配置・指示「青」|成功
 image|14|s4_results.png
 image|10|s9_future.png
 
